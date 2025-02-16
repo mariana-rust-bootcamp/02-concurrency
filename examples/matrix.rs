@@ -1,5 +1,5 @@
 use anyhow::Result;
-use template::{multiply, Matrix};
+use concurrency::{multiply, Matrix};
 
 fn main() -> Result<()> {
     let a = Matrix::new([1, 2, 3, 4, 5, 6], 2, 3);
