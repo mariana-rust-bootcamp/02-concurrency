@@ -26,7 +26,7 @@ fn main() {
 
     loop {
         thread::sleep(Duration::from_secs(2));
-        println!("{:?}", metrics.snapshot());
+        println!("{}", metrics);
     }
 }
 
