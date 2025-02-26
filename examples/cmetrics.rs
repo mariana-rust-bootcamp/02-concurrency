@@ -1,14 +1,14 @@
 use std::{thread, time::Duration};
 
 use anyhow::Ok;
-use concurrency::Metrics;
+use concurrency::CmapMetrics;
 use rand::Rng;
 
 const N: usize = 2;
 const M: usize = 3;
 
 fn main() {
-    let metrics = Metrics::new();
+    let metrics = CmapMetrics::new();
 
     // 模拟并发任务
     // start N workers and M requests
@@ -30,7 +30,7 @@ fn main() {
     }
 }
 
-fn task_worker(idx: usize, matrics: Metrics) {
+fn task_worker(idx: usize, matrics: CmapMetrics) {
     thread::spawn(move || {
         loop {
             let mut rng = rand::thread_rng();
@@ -43,7 +43,7 @@ fn task_worker(idx: usize, matrics: Metrics) {
     });
 }
 
-fn request_worker(metrics: Metrics) {
+fn request_worker(metrics: CmapMetrics) {
     thread::spawn(move || {
         loop {
             let mut rng = rand::thread_rng();

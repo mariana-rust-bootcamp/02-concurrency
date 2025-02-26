@@ -4,11 +4,11 @@ use anyhow::Result;
 use dashmap::DashMap;
 
 #[derive(Debug, Clone)]
-pub struct Metrics {
+pub struct CmapMetrics {
     data: Arc<DashMap<String, i64>>,
 }
 
-impl Metrics {
+impl CmapMetrics {
     pub fn new() -> Self {
         Self {
             data: Arc::new(DashMap::new()),
@@ -32,13 +32,13 @@ impl Metrics {
     }
 }
 
-impl Default for Metrics {
+impl Default for CmapMetrics {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl Display for Metrics {
+impl Display for CmapMetrics {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut res = String::new();
         // RwLockReadGuard实现了Deref trait, 解引用时会返回内部的HashMap
